@@ -6,24 +6,40 @@ The task is to fix the download and add a preview. The preview should show how m
 
 **This repo is the starting point.** The [after repo](https://github.com/koji98/agentflow-customer-export-after) has the app from a real Agentflow run and all its saved results.
 
-## What this demo shows
+## How the workflow works
 
 Codex writes the code. Agentflow runs the steps, checks the work, and saves the results.
 
+These are the **seven actual executable nodes** in the compiled graph. Their names are shortened here. The arrows keep the same paths between nodes, including the feedback loop.
+
 ```mermaid
-flowchart LR
-    A[Start with the broken app] --> B[Ask Codex to fix it]
-    B --> C[Run tests and two AI reviews]
-    C --> D[Save the code and scores]
+flowchart TD
+    plan["plan<br/>Plan the work"]
+    generate_validate["generate_validate<br/>Fix the app and run checks"]
+    criterion_01_behavior["criterion_01_behavior<br/>Tests and acceptance checks"]
+    criterion_02_simplicity["criterion_02_simplicity<br/>AI review: simple code"]
+    criterion_03_operator_clarity["criterion_03_operator_clarity<br/>AI review: clear preview"]
+    completion_gate{"completion_gate<br/>Check the scores"}
+    export_readiness["export_readiness<br/>Save the result packet and summary"]
+
+    plan --> generate_validate
+    generate_validate --> criterion_01_behavior
+    generate_validate --> criterion_02_simplicity
+    generate_validate --> criterion_03_operator_clarity
+    criterion_01_behavior --> completion_gate
+    criterion_02_simplicity --> completion_gate
+    criterion_03_operator_clarity --> completion_gate
+    completion_gate -->|Pass| export_readiness
+    completion_gate -.->|Fail: use feedback and try again| plan
 ```
 
-The tests check facts, such as whether all 103 customers are in the file. Two AI judges check things that need judgment: Is the code easy to follow? Is the preview clear?
+The three checks run in parallel. The tests check facts, such as whether all 103 customers are in the file. Two AI judges check things that need judgment: Is the code easy to follow? Is the preview clear?
 
-Agentflow can ask for another try if a check fails. The saved run passed on its first try. See [how the workflow works](showcase/AUTHORING.md) for the full diagram and scoring rules.
+The completion gate checks the scores against the rules. If they fall short, the results go back to the planning node for another try. This graph allows **three attempts total**. If the last attempt still falls short, the run stops with a failure. The saved run passed on its first try. See the [workflow guide](showcase/AUTHORING.md) for the scoring rules.
 
-## Compiled graph
+## Full technical graph
 
-This is the full graph Agentflow generates from [agentflow.graph.json](agentflow.graph.json). It shows the seven work steps, retry paths, checks, and files passed between steps. The extra boxes show how the run is organized and what it saves.
+This is the unchanged graph Agentflow generates from [agentflow.graph.json](agentflow.graph.json). It includes the same seven nodes, plus files, runtime settings, and boxes that group the steps. Use it to inspect the full wiring.
 
 <details>
 <summary>Open the full compiled graph</summary>
