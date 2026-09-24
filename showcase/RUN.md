@@ -12,7 +12,7 @@ Keep Node 24 active with `nvm use`. Run this from the before app's folder:
 
 ```sh
 git clone https://github.com/koji98/agentflow.git ../agentflow-showcase-runtime
-git -C ../agentflow-showcase-runtime checkout --detach bf7399955a45ea9e8fe0959c64be7a06649d997f
+git -C ../agentflow-showcase-runtime checkout --detach 460fdf31d94390a1aaf12a8f309ebcbf8c4b1d13
 (
   cd ../agentflow-showcase-runtime
   npm ci
@@ -22,7 +22,7 @@ git -C ../agentflow-showcase-runtime checkout --detach bf7399955a45ea9e8fe0959c6
 agentflow --help
 ```
 
-This puts Agentflow in a folder next to the app. The long ID selects the same Agentflow code used for the saved run.
+This puts Agentflow in a folder next to the app. The long ID selects the Agentflow code used for the September 24 rerun, including the judge network permission fix.
 
 The commands inside parentheses run in that other folder. When they finish, you are back in the app's folder.
 
@@ -47,9 +47,9 @@ For more help, see the [official Codex CLI guide](https://learn.chatgpt.com/docs
 
 The graph uses `"model": "auto"`. That tells Agentflow to let Codex CLI choose its default model.
 
-The saved run used **Codex CLI 0.142.2**, **GPT-5.5**, and **medium** reasoning. The install steps above use the version tested for this public setup guide. A new run may choose a different model and produce a different result.
+The September 24 rerun used **Codex CLI 0.144.5**, **GPT-5.6-sol**, and **medium** reasoning in its direct worker and judge logs. The first run used GPT-5.5. A new run may choose a different model and produce a different result.
 
-See [the saved model log](https://github.com/koji98/agentflow-customer-export-after/blob/main/results/run/nodes/002-generate-and-validate-98e034e54484/executions/i001-a001-exec-49f15c8227d21dd8/human-debug/harness/stderr.log#L4) for the recorded choice.
+See [the saved model log](https://github.com/koji98/agentflow-customer-export-after/blob/main/results/2026-09-24/run/nodes/002-generate-and-validate-98e034e54484/executions/i001-a001-exec-49f15c8227d21dd8/human-debug/harness/stderr.log#L4) for the recorded choice.
 
 ## 3. Check the tools and the plan
 
@@ -72,7 +72,7 @@ npm run workflow:run
 
 This reads [agentflow.graph.json](../agentflow.graph.json), asks Codex to change the app, runs the tests, and asks two AI judges to review the work.
 
-The saved run took **13 minutes and 13 seconds**, including time to write the final report. Your run may take longer. Keep the [saved results](https://github.com/koji98/agentflow-customer-export-after/blob/main/results/README.md) open if you are showing this live.
+The saved run took **12 minutes and 52 seconds**, including time to write the final report. Your run may take longer. Keep the [saved results](https://github.com/koji98/agentflow-customer-export-after/blob/main/results/README.md) open if you are showing this live.
 
 ## 5. Read the result
 
@@ -103,3 +103,7 @@ To start over, clone the before repo into a **new folder**. This keeps your last
 | Security or install-script warnings while building Agentflow | The saved Agentflow version has warnings in its build tools. Its install and build passed our setup checks. Keep its lockfile as supplied if you want to use the same version. |
 
 For Node, Python, or local server errors, see [setup help](SETUP.md).
+
+## Be clear about what this demo proves
+
+This is an open-book demo. The workspace includes the task checks and guides that link to prior results. To run a blind test, move those audience guides and prior-result links outside the agent workspace first. See the [fairness audit](https://github.com/koji98/agentflow-customer-export-after/blob/main/results/2026-09-24/operator/graph-audit.md). The saved rerun kept the original inputs unchanged.

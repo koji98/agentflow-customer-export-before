@@ -49,7 +49,7 @@ The before app has bugs on purpose. This is the expected result:
 - `npm run check:acceptance`: 16 of 29 checks pass, then the command ends with an error.
 - Five of those failed checks show HTTP 404 because the preview does not exist yet.
 
-The after app should pass all 12 app tests and all 29 export and preview checks.
+The current after app should pass all 13 app tests and all 29 export and preview checks.
 
 ## Check the setup tool itself
 

@@ -84,7 +84,7 @@ npm run check:acceptance
 
 If you see a missing tool or a permission error, fix that first with the [setup help](showcase/SETUP.md).
 
-Ready to let Agentflow work on it? Follow [Run the workflow](showcase/RUN.md). The recorded run took **13 minutes and 13 seconds**.
+Ready to let Agentflow work on it? Follow [Run the workflow](showcase/RUN.md). The latest recorded run took **12 minutes and 52 seconds**.
 
 ## More detail
 
@@ -93,3 +93,5 @@ Ready to let Agentflow work on it? Follow [Run the workflow](showcase/RUN.md). T
 - [Where this example came from](showcase/PROVENANCE.md): versions and saved Git copies.
 
 The original instructions for the AI are in [TICKET.md](TICKET.md), [EXPORT_PREVIEW.md](EXPORT_PREVIEW.md), [APP_GUIDE.md](APP_GUIDE.md), and [AGENTS.md](AGENTS.md). We keep their exact wording so later runs have the same task.
+
+This is an **open-book demo**. The agent can read these guides and the task checks. See the [fairness audit](https://github.com/koji98/agentflow-customer-export-after/blob/main/results/2026-09-24/operator/graph-audit.md) and [why six passing tests did not finish the task](https://github.com/koji98/agentflow-customer-export-after/blob/main/results/2026-09-24/operator/tests-explained.md).

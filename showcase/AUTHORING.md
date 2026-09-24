@@ -55,7 +55,7 @@ The judge checks that the preview tells you:
 
 It also checks that an old preview cannot describe a download with new filters.
 
-**This judge reads the code. It does not check the page in a browser.** The saved run shows why that matters: the words were clear, but the preview opened below the part of the page you could see.
+**This judge reads the code. It does not check the page in a browser.** The first run shows why that matters: the words were clear, but the preview opened below the part of the page you could see. In the September 24 rerun, the preview opens in view, but a download control stays visible when loading fails. A separate browser check found that bug.
 
 ## How the total score works
 

@@ -10,15 +10,15 @@ The `before-agentflow` tag saves the first public copy at commit `e72e8a5124b408
 
 ## Which versions were used?
 
-| Part | Saved run | Public setup guide |
+| Part | First saved run | Current setup guide |
 | --- | --- | --- |
 | Node.js | 24.18.0 | 24.18.0 |
 | Python | 3.12 | 3.10 or later |
 | Codex CLI | 0.142.2 | 0.144.5, tested during setup checks |
 | Model | GPT-5.5, medium reasoning | The graph lets Codex choose its default |
-| Agentflow | The Git commit below | The same Git commit |
+| Agentflow | `bf7399955a45ea9e8fe0959c64be7a06649d997f` | `460fdf31d94390a1aaf12a8f309ebcbf8c4b1d13` |
 
-Agentflow commit: `bf7399955a45ea9e8fe0959c64be7a06649d997f` in [koji98/agentflow](https://github.com/koji98/agentflow).
+First run Agentflow commit: `bf7399955a45ea9e8fe0959c64be7a06649d997f` in [koji98/agentflow](https://github.com/koji98/agentflow).
 
 The graph says `"model": "auto"`. A later run may use a different model and get a different result. See [Run the workflow](RUN.md) for setup steps.
 
@@ -35,3 +35,7 @@ In the original run, the check tools lived outside the app folder. Here, they li
 We added setup guides, `.nvmrc`, a lockfile, the doctor tool, and GitHub checks for Linux and macOS. We then rewrote the reader guides in plain English.
 
 These changes did not change the app code or the original task files. The saved Git tags still point to the same before and after copies.
+
+## September 24 rerun
+
+The rerun started from this repo at `8c5387e80a736ceeda41994c1af93b41881b8340`. It used the merged network permission fix, Codex CLI 0.144.5, and GPT-5.6-sol in its direct worker and judge logs. The graph stayed unchanged. The current guides were updated after that run. Read the [new results and source notes](https://github.com/koji98/agentflow-customer-export-after/blob/main/results/2026-09-24/PROVENANCE.md).
